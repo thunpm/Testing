@@ -1,0 +1,84 @@
+#sidebar {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 20%;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #37474F;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+li.nav-item {
+    margin-right: 40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+a.navbar-brand {
+    font-size: 22px;
+}
+
+#content {
+    width: 100%;
+    position: relative;
+    margin-right: 0;
+}
+
+#sidebar header {
+    background-color: #263238;
+    font-size: 20px;
+    line-height: 52px;
+    color: white;
+    padding-left: 20px;
+}
+
+#sidebar header a {
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    height: 30px;
+    font-size: 15px;
+    padding: 0 16px;
+}
+
+#sidebar header a:hover {
+    color: #fff;
+}
+
+#sidebar .nav{
+    list-style: none;
+    padding: 0;
+    display: block;
+}
+
+#sidebar .nav a{
+    background: none;
+    border-bottom: 1px solid #455A64;
+    color: #fff;
+    font-size: 14px;
+    padding: 16px 24px;
+    display: block;
+    text-decoration: none;
+    position: relative;
+    transition: right linear 0.1s;
+    right: 0;
+}
+
+#sidebar .nav a:hover{
+    right: -4px; 
+    background: none;
+    color: rgb(211, 202, 202);
+}
+
+#sidebar .nav a i{
+    margin-right: 16px;
+}
+
+.nav-a__icon {
+    font-size: 18px;
+}

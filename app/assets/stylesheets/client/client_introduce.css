@@ -1,0 +1,62 @@
+.intro .title {
+	width: 100%;
+	background-color: #B7C5F5;
+	padding:  20px 0px;
+}
+
+.intro .title h2 {
+	color:  #14274A;
+	font-size: 40px;
+	text-align: center;
+	font-weight: bold;
+	line-height: 50px;
+}
+
+.intro .title p {
+	color:  black;
+	font-size: 20px;
+	font-style: italic;
+	text-align: center;
+	line-height: 35px;
+}
+
+.intro .content ul li {
+	margin-top: 20px;
+	margin-bottom: 100px;
+}
+
+.intro .content ul li h4 {
+	width: 300px;
+    color: #14274A;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #14274A;
+	margin: 20px auto;
+}
+
+.intro .content ul li p {
+	font-style: italic;
+	font-size: 20px;
+	line-height: 30px;
+	text-align: justify;
+}
+
+.intro .content ul li .kk ul li {
+	margin-bottom: 20px;
+	list-style-type: circle;
+}
+
+.intro .content ul li .kk ul li p .tt {
+	font-weight: bold;
+}
+
+
+@media screen and (max-width: 620px) {
+.intro .title h2 {font-size: 30px;}
+.intro .title p {font-size: 15px;}
+.intro .content ul li h4 {font-size: 17px;}
+.intro .content ul li p {font-size: 15px;padding:  0px 1em;}
+.intro .content ul li {margin-bottom: 40px;}
+}

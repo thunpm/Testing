@@ -1,0 +1,120 @@
+.contact{
+    padding: 40px 65.297px;
+    background-color: #dcdcdc;
+    width: 100%;
+}
+.contact__title {
+    margin-bottom: 35px;
+    display: inline-block;
+    background-color: var(--white-color);
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    color: var(--primary-color);
+    box-shadow: 0 1px 3px #ccc;
+}
+.contact__heading {
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 550;
+}
+
+.contact-infor {
+    background-color: var(--white-color);
+    border-radius: 5px;
+    box-shadow: 0 1px 3px #ccc;
+    margin-bottom: 35px;
+    padding: 40px 60px;
+}
+.contact__map {
+    margin-bottom: 26px;
+}
+.contact-content {
+    display: flex;
+}
+.contact-content__left {
+    padding-right: 14px;
+    width: 68%;
+}
+.contact-content__left-title {
+    font-size: 17px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 18px;
+}
+table.contact-content__left-table {
+    margin: auto;
+}
+td.contact-infor__left-from-td {
+    padding-bottom: 8px;
+}
+.contact-infor__left-from-red {
+    color: red;
+    font-weight: 500;
+}
+.contact-infor__bank {
+    color: #000;
+    font-weight: 500;
+}
+.contact-infor__right-title{
+    font-size: 17px;
+    line-height: 27px;
+    font-weight: 500;
+    font-style: italic;
+
+}
+.contact-infor__right-from {
+    margin-top: 30px;
+}
+.contact-infor__right-from-table{
+    width: 100%;
+}
+.contact-infor__right-from-td {
+    padding: 10px;
+}
+.contact-infor__right-from-red {
+    color: red;
+}
+.contact__right-from-btn{
+    padding-top: 19px;
+    text-align: center;
+
+}
+/* responsive */
+@media screen and (max-width: 990px){
+    .contact {
+        padding: 20px 0;
+    }
+    .contact-infor {
+        padding: 40px 11px;
+    }
+    iframe {
+        width: -webkit-fill-available;
+    }
+    .contact-content {
+        display: initial;
+    }
+    .contact-content__left {
+        width: 100%;
+        padding-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    p.contact-infor__right-title {
+        font-size: 13px;
+    }
+}
+@media screen and (min-width: 990px){
+    iframe {
+        width: -webkit-fill-available;
+    }
+    .contact-content__left {
+        
+        width: 110%;
+    }
+   
+
+}

@@ -1,0 +1,175 @@
+body {
+	background-color: #dcdcdc;
+}
+
+.mainn {
+	width: 90%;
+	margin: 50px auto;
+	padding: 5px;
+}
+
+.mainn .tittle h2 {
+	color: #ED5323;
+	font-weight: bold;
+	font-size: 30px;
+	text-align: center;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.mainn .contain {
+	background-color: white;
+	border-radius: 7px;
+	padding-bottom: 30px;
+	margin-top: 20px;
+}
+
+.mainn .contain table {
+	width: 95%;
+	padding-top: 35px;
+	border-collapse:collapse;
+	margin: 10px auto;
+}
+	
+
+.mainn .contain table tr {
+	border-bottom: 1px solid #14274A;
+}
+
+
+.mainn .contain table tr th {
+	font-size: 20px;
+	color: #14274A;
+	padding-bottom: 10px;
+	padding-top: 30px;
+	text-align: center;
+}
+
+.mainn .contain table tr td a:hover {
+	text-decoration: none;
+	color: #14274A;
+}
+
+.mainn .contain table tr td, .mainn .contain table tr td a {
+	text-align: center;
+	color: black;
+	padding: 10px;
+}
+
+.mainn .contain table tr td .cont-left {
+	width: 40%;
+	float: left;
+	margin-right: 5px;
+}
+
+.mainn .contain table tr td .cont-left a img{
+	width: 150px;
+	height: 150px;
+}
+
+.mainn .contain table tr td .cont-right {
+	width: 50%;
+	float: right;
+}
+
+.mainn .contain table tr td .cont-right h4 {
+	margin-top: 30px;
+	margin-bottom: 15px;
+	width: 173px;
+}
+
+.mainn .contain table tr td .cont-right h4 a{
+	text-decoration: none;
+	font-size: 18px;
+	color: #14274A;
+}
+
+.mainn .contain table tr td .cont-right p{
+	font-size: 16px;
+	line-height: 19px;
+	color: #5C6C78;
+	margin-bottom: 5px;
+	text-align: left;
+	padding-left: 4px;
+}
+
+.mainn .contain .count-left {
+	margin-bottom: 15px;
+}
+
+.mainn .contain .count-left p {
+	padding-left: 80px;
+	font-style: italic;
+	font-size: 20px;
+	font-weight: bold;
+	color: #14274A;
+}
+
+.count-right a {
+	text-decoration: none;
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 23px;
+	background-color: #ED5323;
+	color: white;
+	float: right;
+	margin-right: 55px;
+}
+
+.price {
+	color: #ED5323;
+	text-align: center;
+	font-size: 20px;
+}
+
+.tang {
+	padding: 5px 10px;;
+	border: 1px solid black;
+}
+
+.number {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 5px 20px;
+}
+
+.clr {
+	clear: both;
+}
+
+@media screen and (max-width: 990px) {
+.mainn {width: 100%;padding:  0px;}
+.mainn .contain table tr th {font-size: 17px;}
+.mainn .contain table tr td .cont-right p{font-size: 14px;}
+.mainn .contain table tr td .cont-right h4 a{font-size: 15px;}
+.price {font-size: 16px;}
+.mainn .contain .count-left p {padding-left: 30px;}
+.mainn .contain table tr td .cont-right h4 {width: 150px;}
+.edit {margin-right: 0px;}
+.count-right a {font-size: 18px;}
+.mainn .contain table tr td .cont-left a img{
+	width: 100%;
+}
+}
+
+@media screen and (max-width: 620px) {
+.mainn .contain table {width: 100%;margin-left: 0em;padding-top: 35px;border-collapse:collapse;margin-bottom: 20px;}
+table, thead, tbody, th, td, tr { display: block; }
+.mainn .contain table tr td .cont-left a img{
+	width: 50%;
+}
+.mainn .contain table tr td .cont-left {width: 100%;float: none;margin-right: 0px;padding-left: 3em;}
+.mainn .contain table tr td .cont-right {width: 100%;float: none;padding-left: 35%;}
+thead tr { position: absolute;top: -9999px;left: -9999px;}
+.mainn td { border: none;border-bottom: 1px solid #eee; position: relative;}
+.mainn td:before { position: absolute;top: 6px;left: 6px;width: 30%; font-size: 15px;font-weight: bold;white-space: nowrap;}
+.price {font-size: 17px;}
+.mainn .contain table tr {margin-bottom: 20px;}
+.count-right a {border-radius: 5px;font-size: 20px;background-color: #ED5323;color: white;float: right;margin-right: 55px;}
+.mainn .contain .count-left p {padding-left: 2em;}
+.mainn td:nth-of-type(1):before { content: "Tên sản phẩm"; }
+.mainn td:nth-of-type(2):before { content: "Giá"; }
+.mainn td:nth-of-type(3):before { content: "Số lượng"; }
+.mainn td:nth-of-type(4):before { content: "Thành tiền"; }
+.mainn td:nth-of-type(5):before { content: ""; }
+}
