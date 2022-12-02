@@ -7,6 +7,17 @@
 ?>
 <?php require('views/client/layouts/header.php'); ?>
 <?php require('views/client/layouts/menu.php'); ?>
+<style>
+
+    input[type="radio"] {
+        margin: 0px;
+    }
+
+    label.form-check-label {
+        margin-left: 46px;
+    }
+
+</style>
 <div class="main-block">
     <div class="content">
         <div class="contact__title">
@@ -18,8 +29,8 @@
                     <li>
                         <i class="far fa-user-circle"></i>
                         <div>
-                            <p>Tài khoản</p>
-                            <p><?php $user = $_SESSION['user'];
+                            <p style="line-height: 24px;">Tài khoản</p>
+                            <p style="line-height: 24px;"><?php $user = $_SESSION['user'];
                                 echo $user->fullname; ?></p>
                         </div>
                     </li>
@@ -32,57 +43,53 @@
             </div>
             <div class="user-info">
                 <form action="index.php?controller=user&action=info" method="post">
-               
-                <div class="form-group">
-                       
+                    <?php if ($msg != "") {
+                        echo '<div class="alert alert-warning" role="alert">';
+                        echo $msg;
+                        echo '</div>';
+                    }
+                    ?>
+                    <div class="form-group">
+                        <label for="HoTen" class="text-inf">Họ và tên *</label><br>
+                        <input type="text" required name="HoTen" id="HoTen" class="form-control" value="<?= $user->fullname ?>">
                     </div>
                     <div class="form-group">
-                        <label for="HoTen" class="text-inf">Họ và tên:</label><br>
-                        <input type="text" name="HoTen" id="HoTen" class="form-control" value="<?= $user->fullname ?>">
-					
+                        <label  for="SoDienThoai" class="text-inf">Số điện thoại *</label><br>
+                        <input type="text" required name="SoDienThoai" id="username" class="form-control" value="<?= $user->phoneNumber ?>"> 
                     </div>
                     <div class="form-group">
-                        <label  for="SoDienThoai" class="text-inf">Số điện thoại:</label><br>
-                       <input type="text" name="SoDienThoai" id="username" class="form-control" value="<?= $user->phoneNumber ?>"> 
+                        <label for="Email" class="text-inf">Email</label><br>
+                        <input type="email" name="Email" id="mail" class="form-control" value="<?= $user->email ?>"> 
                     </div>
                     <div class="form-group">
-                        <label for="Email" class="text-inf">Email:</label><br>
-                        <input type="text" name="Email" id="mail" class="form-control" value="<?= $user->email ?>"> 
-                    </div>
-                
-                    
-                    <div class="form-group">
-                        <label class="text-inf">Giới tính:</label><br>
+                        <label class="text-inf">Giới tính</label><br>
                         <div class="form-check">
-                            <div class="form">
-                                <?php
-                                if ($user->gender && $user->gender == "Nam") {
-                                    echo '<input class="form-check-input" type="checkbox" checked value="" id="nam">';
-                                } else {
-                                    echo '<input class="form-check-input" type="checkbox" value="" id="nam">';
-                                }
-                                ?>
-                                <label class="form-check-label" for="nam">
-                                    Nam
-                                </label>
-                            </div>
-                            <div class="form">
-                                <?php
-                                if ($user->gender && $user->gender == "Nam") {
-                                    echo '<input class="form-check-input" type="checkbox" checked value="" id="nu">';
-                                } else {
-                                    echo '<input class="form-check-input" type="checkbox" value="" id="nu">';
-                                }
-                                ?>
-                                <label class="form-check-label" for="nu">
-                                    Nữ
-                                </label>
-                            </div>
+                            <?php 
+                            if ($user->gender == "Nam") {
+                                echo '<input type="radio" class="form-check-input" id="radio1" name="GioiTinh" value="Nam" checked>';
+                            } else {
+                                echo '<input type="radio" class="form-check-input" id="radio1" name="GioiTinh" value="Nam">';
+                            }
+                            ?>
+                            <label class="form-check-label" for="radio1">Nam</label>
                         </div>
+                        <div class="form-check">
+                            <?php 
+                            if ($user->gender == "Nu") {
+                                echo '<input type="radio" class="form-check-input" id="radio2" name="GioiTinh" value="Nu" checked>';
+                            } else {
+                                echo '<input type="radio" class="form-check-input" id="radio2" name="GioiTinh" value="Nu">';
+                            }
+                            ?>
+                            <label class="form-check-label" for="radio2">Nữ</label>
+                        </div> 
                     </div>
-                   
                     <div class="form-group">
-                        <input type="hidden" name="MaKH" id="MaKH" class="form-control"  value="<?php echo $MaKH?>">
+                        <label for="birthday" class="text-inf">Ngày sinh</label><br>
+                        <input type="date" name="NgaySinh" id="birthday" class="form-control" value="<?= $user->birthday ?>"> 
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="MaKH" id="MaKH" class="form-control"  value="<?php echo $user->idCustomer?>">
                         <input style="margin-top: 20px;" type="submit" name="submit" class="btn btn-danger btn-md" value="CHỈNH SỬA">
                     </div>
                 </form>
