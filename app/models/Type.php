@@ -49,6 +49,13 @@
         }
 
         static function getTheLoai($MaTheLoai) { 
+            if(!is_string($MaTheLoai)) {
+                return "Mã thể loại phải là chuỗi!";
+            }
+
+            if(($MaTheLoai[0] != 'T') || ($MaTheLoai[1] != 'L')) {
+                return "Mã thể loại phải bắt đầu bằng TL!";
+            }
             $db = DB::getInstance(); 
             $sql = "SELECT * FROM TheLoai WHERE MaTL ='".$MaTheLoai."'"; 
             $req = $db->query($sql);
@@ -57,6 +64,9 @@
             foreach ($req->fetchAll() as $item) { 
                 $list[] = new Type($item['MaTL'], $item['TenTL'], $item['MaDM'], Category::getNameById($item['MaDM'])); 
             } 
+            if(sizeof($list) <= 0) {
+                return null;
+            }
 
             return $list[0]; 
         }
@@ -85,24 +95,42 @@
         }
 
         static function insertTheLoai($TenTheLoai, $MaDanhMuc) { 
+            if($TenTheLoai ==""|| $MaDanhMuc==""){
+                return "Chưa nhập dữ liệu ";
+            }
             $db = DB::getInstance();
 
             $MaTheLoai = Type::lastID();
             
             $stmt = $db->prepare('insert into theloai (MaTL, TenTL, MaDM) values (:MaTL, :TenTL, :MaDM)');
-            $stmt->bindParam(':MaTL', $MaTheLoai);
-            $stmt->bindParam(':TenTL', $TenTheLoai);
-            $stmt->bindParam(':MaDM', $MaDanhMuc);
-            $stmt->execute();
+            try {
+                $stmt->bindParam(':MaTL', $MaTheLoai);
+                $stmt->bindParam(':TenTL', $TenTheLoai);
+                $stmt->bindParam(':MaDM', $MaDanhMuc);
+                $stmt->execute();
+                return "Thêm thành công";
+            } catch (Exception $e) {
+                return "Error";
+            } 
         }
 
         static function editTheLoai($theloai) { 
+            if($theloai==""){
+                return "Chưa sửa dữ liệu ";
+            }
             $db = DB::getInstance();
             $stmt = $db->prepare('update theloai set TenTL = :TenTL, MaDM = :MaDM where MaTL = :MaTL');
-            $stmt->bindParam(':TenTL', $theloai->tenTL);
-            $stmt->bindParam(':MaDM', $theloai->maDM);
-            $stmt->bindParam(':MaTL', $theloai->maTL);
-            $stmt->execute();
+            try {
+                $stmt->bindParam(':TenTL', $theloai->tenTL);
+                $stmt->bindParam(':MaDM', $theloai->maDM);
+                $stmt->bindParam(':MaTL', $theloai->maTL);
+                $stmt->execute();
+                return"Update thành công";
+            } catch (Exception $e) {
+                return"Update thành công";
+            }
+                
+            
         }
 
         static function deleteTheLoai($maTL) { 
