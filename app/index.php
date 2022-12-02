@@ -1,5 +1,5 @@
 <?php 
-    require_once('connection.php');
+    require_once('app/connection.php');
     
     // Khởi tạo session PHP nếu chưa khởi tạo
     if (session_id() === '') {
