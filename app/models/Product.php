@@ -1,10 +1,7 @@
 <?php 
     require_once('app/models/Picture.php'); 
     require_once('app/models/Characteristic.php');
-<<<<<<< HEAD
-=======
     require_once ('app/connection.php');
->>>>>>> d49e44fcee255e887f233d3eac909c20b6966278
 
     class Product {
         public $maSP;
