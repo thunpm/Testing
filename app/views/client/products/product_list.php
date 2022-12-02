@@ -59,7 +59,7 @@
                             <div class="product-list-moble__filter"> 
                                 <a class="filter__btn" href="index.php?controller=product&action=product_list&danhmuc=<?= $danhMuc->maDM ?>&theloai=<?= $theLoai->maTL ?>&page=1">
                                     <?= $theLoai->tenTL ?>
-                                </a>
+                                </a> 
                             </div> 
                         <?php
                             }
