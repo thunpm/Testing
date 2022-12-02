@@ -1,8 +1,9 @@
 <?php 
-    require_once('models/Picture.php'); 
-    require_once('models/Characteristic.php');
+    require_once('app/models/Picture.php'); 
+    require_once('app/models/Characteristic.php');
+    require_once ('app/connection.php');
 
-    class Product { 
+    class Product {
         public $maSP;
         public $tenSP;
         public $moTa;
@@ -76,6 +77,15 @@
 
         // lấy 1 sản phẩm từ mã sản phẩm
         static function getSanPham($MaSanPham) { 
+
+            if(!is_string($MaSanPham)) {
+                return "Mã sản phẩm phải là chuỗi!";
+            }
+
+            if(($MaSanPham[0] != 'S') || ($MaSanPham[1] != 'P')) {
+                return "Mã sản phẩm phải bắt đầu bằng SP!";
+            }
+
             $db = DB::getInstance(); 
             $sql = "SELECT sp.*, tl.* FROM SanPham sp 
                     INNER JOIN TheLoai tl on sp.MaTL = tl.MaTL 
@@ -89,6 +99,10 @@
                                     $item['SoLuongBan'], $item['Gia'], $item['KhuyenMai'], $item['MaTL'],
                                     Picture::listBySanPham($item['MaSP']), Characteristic::listBySanPham($item['MaSP'])); 
             } 
+
+            if(sizeof($list) <= 0) {
+                return null;
+            }
 
             return $list[0]; 
         }
