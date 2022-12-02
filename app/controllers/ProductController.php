@@ -35,7 +35,7 @@
         }
 
         public function product_detail() {
-            $maSanPham = $_GET['masp'];
+            $maSanPham = $_GET['masp']; 
             $maDM = $_GET['madanhmuc'];
             $tenDM = Category::getNameById($maDM);
             $sanPham = Product::getSanPham($maSanPham);

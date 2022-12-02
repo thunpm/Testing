@@ -1,6 +1,6 @@
 <?php 
-	require_once('models/Customer.php');
-	require_once('models/Product.php');
+	require_once('app/models/Customer.php');
+	require_once('app/models/Product.php');
 
 	class Evaluate { 
 		public $maDG;
@@ -69,6 +69,10 @@
 		}
 
 		static function add($maSP, $maKH, $danhGia, $nhanXet) { 
+			if($danhGia < 1) {
+				return "Số sao không hợp lệ!";
+			}
+
             $db = DB::getInstance(); 
 
 			$maDG = Evaluate::lastID();
@@ -95,6 +99,8 @@
         }
 
 		static function store ($maSP, $maKH, $danhGia, $nhanXet) {
+
+			if($danhGia)
 			$maDG = Evaluate::lastID();
 			if ($maDG == null) {
 				$maDG = 'DG000';
