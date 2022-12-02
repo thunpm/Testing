@@ -1,5 +1,6 @@
 <?php
 require_once ('app/connection.php');
+// require_once ('connection.php');
 
 class Customer { 
     public $idCustomer;
@@ -88,10 +89,10 @@ class Customer {
         $sql = "SELECT * FROM KhachHang WHERE TenDangNhap='".$username."'"; 
         $req = $db->query($sql);
 
-        foreach ($req->fetchAll() as $item) { 
+        foreach ($req->fetchAll() as $item) {
            return new Customer($item['MaKH'], $item['TenDangNhap'], $item['MatKhau'], $item['HoTen'],
                             $item['SoDienThoai'], $item['Email'], $item['GioiTinh'], $item['NgaySinh']);
-        } 
+        }
     }
 
     static function getByMaKH($MaKH) { 
@@ -105,14 +106,43 @@ class Customer {
         } 
     }
 
-    static function UpdateAccount($MaKH,$HoTen,$SoDienThoai,$Email) { 
-        $db = DB::getInstance(); 
-        $sql = "UPDATE khachhang set HoTen='".$HoTen."',SoDienThoai='".$SoDienThoai."',Email='".$Email."' where MaKH='".$MaKH."'"; 
-        $req = $db->query($sql);
-        foreach ($req->fetchAll() as $item) { 
-			return true;
-		} 
-		return false;
+    static function updateAccount($MaKH, $HoTen, $SoDienThoai, $Email, $GioiTinh, $NgaySinh) {
+        if ($HoTen == '' || $SoDienThoai == '') {
+            return "Chưa nhập trường bắt buộc";
+        }
+
+        if (! preg_match('/[(84)0][35789]([0-9]{8})$/', $SoDienThoai)) {
+            return "Số điện thoại không hợp lệ";
+        }
+
+        if ($Email != '' && ! preg_match('/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/', $Email)) {
+            return "Email không hợp lệ";
+        }
+
+        if ($NgaySinh != '') {
+            try {
+                if (date("Y-m-d", $NgaySinh) >= date("Y-m-d", strtotime("now"))) {
+                    return "Ngày sinh không hợp lệ";
+                }
+                date_default_timezone_set('UTC');
+                $date = DateTime::createFromFormat($format, $NgaySinh);
+                return $date && ($date->format($format) === $NgaySinh);
+            } catch (Exception $e) {
+                return "Ngày sinh không hợp lệ";
+            }
+        }
+
+        $db = DB::getInstance();
+        $sql = "UPDATE khachhang 
+                SET HoTen='".$HoTen."', SoDienThoai='".$SoDienThoai."', Email='".$Email."', GioiTinh='".$GioiTinh."', NgaySinh='".$NgaySinh."' 
+                WHERE MaKH='".$MaKH."'";
+
+        try {
+            $req = $db->query($sql);
+            return "Ok";
+        } catch (Exception $e) {
+            return "Đã xảy ra lỗi, vui lòng thử lại";
+        }
     }
 
     static function SeclecPass($TenDangNhap,$matkhaucu) { 
@@ -128,7 +158,7 @@ class Customer {
     
     static function UpdatePass($matkhaumoi_1) { 
 		$db = DB::getInstance(); 
-		$sql = "UPDATE khachhang SET MatKhau='".$matkhaumoi_1."'";
+		$sql = "UPDATE khachhang SET MatKhau='".$matkhaumoi_1."' WHERE MaKH='KH001'";
 
 		$req = $db->query($sql);
 		foreach ($req->fetchAll() as $item) { 
@@ -195,4 +225,3 @@ static function getAll()
 }
 
 ?>
-

@@ -388,6 +388,7 @@ span.fas.fa-angle-right::before, span.fas.fa-angle-left::before {
 
 .main-block .content .list-user-info i {
 	margin-right: 10px;
+	margin-top: 4px;
 }
 
 .main-block .content .list-user-info li {
@@ -444,6 +445,14 @@ span.fas.fa-angle-right::before, span.fas.fa-angle-left::before {
 
 .main-block .content .user-info .address .mac-dinh {
 	color: red;
+}
+
+.main-block .content .user-info .address li {
+	line-height: 23px;
+}
+
+.list-address {
+	margin-top: 30px;
 }
 
 .navbar-collapse {

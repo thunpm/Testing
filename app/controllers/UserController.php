@@ -137,21 +137,34 @@
         }
 
         public function info() {
-            if(isset($_POST['submit'])&& ($_POST['submit'])) {
-                $MaKH = $_POST['MaKH'];
-                $HoTen = $_POST['HoTen'];
-                $SoDienThoai = $_POST['SoDienThoai'];
-                $Email = $_POST['Email'];
-                
-                Customer::UpdateAccount($MaKH, $HoTen, $SoDienThoai, $Email);
-                echo '<script type="text/javascript">
-                    alert("Cập nhập thành công!"); 
-                    history.go(-1)
-                    </script>';
-            }
+            if (isset($_SESSION['user'])) {
+                $msg = '';
 
-            $data = array('title' => 'Thông tin của tôi', 'info' => 'info'); 
-            $this->render('info', $data);
+                if (isset($_POST['submit']) && ($_POST['submit'])) {
+                    // echo $MaKH;
+                    $MaKH = $_POST['MaKH'];
+                    $HoTen = $_POST['HoTen'];
+                    $SoDienThoai = $_POST['SoDienThoai'];
+                    $Email = $_POST['Email'];
+                    $GioiTinh = $_POST['GioiTinh'];
+                    $NgaySinh = $_POST['NgaySinh'];
+                    
+                    $result = Customer::updateAccount($MaKH, $HoTen, $SoDienThoai, $Email, $GioiTinh, $NgaySinh);
+                    
+                    if ($result == "Ok") {
+                        $msg = 'Cập nhật thành công';
+                        $user = Customer::getByMaKH($MaKH);
+                        $_SESSION['user'] = $user;
+                    } else {
+                        $msg = $result;
+                    }
+                }
+
+                $data = array('title' => 'Thông tin của tôi', 'info' => 'info', 'msg' => $msg); 
+                $this->render('info', $data);
+            }  else {
+                $this->login();
+            }
         }
 
         public function address_list() {

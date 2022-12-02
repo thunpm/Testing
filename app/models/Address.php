@@ -74,21 +74,38 @@ class Address {
 
 
     static function add($maKH, $tinh, $huyen, $xa, $diaChi, $ghiChu) { 
+        if ($tinh == '' || $huyen == '' || $xa == '' || $diaChi == '') {
+            return "Chưa nhập trường bắt buộc";
+        }
+
         $db = DB::getInstance(); 
         $maDC = Address::lastID();
         $sql = "INSERT DiaChi(MaDC, MaKH, Tinh, Huyen, Xa, SoNha, GhiChu) 
                 VALUES ('".$maDC."', '".$maKH."', '".$tinh."', '".$huyen."', '".$xa."', '".$diaChi."', '".$ghiChu."')"; 
-        $req = $db->query($sql);
         
-        return $req;
+        try {
+            $req = $db->query($sql);
+            return "Ok";
+        } catch (Exception $e) {
+            return "Error";
+        }
     }
 
     static function update($id, $tinh, $huyen, $xa, $diaChi, $ghiChu) { 
+        if ($tinh == '' || $huyen == '' || $xa == '' || $diaChi == '') {
+            return "Chưa nhập trường bắt buộc";
+        }
+
         $db = DB::getInstance(); 
         $sql = "UPDATE DiaChi SET Tinh='".$tinh."', Huyen='".$huyen."', Xa='".$xa."', SoNha='".$diaChi."', GhiChu='".$ghiChu."' 
              WHERE MaDC='".$id."'"; 
-        $req = $db->query($sql);
-        return $req;
+        
+        try {
+            $req = $db->query($sql);
+            return "Ok";
+        } catch (Exception $e) {
+            return "Error";
+        }
     }
 
     static function delete($id) { 
@@ -102,4 +119,3 @@ class Address {
 }
 
 ?>
-

@@ -1,1 +1,1 @@
-<p>hhh</p>
+<p style="display: flex; justify-content: center; margin-top: 70px; font-size: 50px;">Error</p>
